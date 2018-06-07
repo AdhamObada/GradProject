@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Test</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.ti.ccstudio.core.ccsNature</nature>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>MQTTConnect.h</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTConnect.h</location>
+		</link>
+		<link>
+			<name>MQTTConnectClient.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTConnectClient.c</location>
+		</link>
+		<link>
+			<name>MQTTConnectServer.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTConnectServer.c</location>
+		</link>
+		<link>
+			<name>MQTTDeserializePublish.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTDeserializePublish.c</location>
+		</link>
+		<link>
+			<name>MQTTFormat.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTFormat.c</location>
+		</link>
+		<link>
+			<name>MQTTFormat.h</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTFormat.h</location>
+		</link>
+		<link>
+			<name>MQTTPacket.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTPacket.c</location>
+		</link>
+		<link>
+			<name>MQTTPacket.h</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTPacket.h</location>
+		</link>
+		<link>
+			<name>MQTTPublish.h</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTPublish.h</location>
+		</link>
+		<link>
+			<name>MQTTSerializePublish.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTSerializePublish.c</location>
+		</link>
+		<link>
+			<name>MQTTSubscribe.h</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTSubscribe.h</location>
+		</link>
+		<link>
+			<name>MQTTSubscribeClient.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTSubscribeClient.c</location>
+		</link>
+		<link>
+			<name>MQTTSubscribeServer.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTSubscribeServer.c</location>
+		</link>
+		<link>
+			<name>MQTTUnsubscribe.h</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTUnsubscribe.h</location>
+		</link>
+		<link>
+			<name>MQTTUnsubscribeClient.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTUnsubscribeClient.c</location>
+		</link>
+		<link>
+			<name>MQTTUnsubscribeServer.c</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTUnsubscribeServer.c</location>
+		</link>
+		<link>
+			<name>StackTrace.h</name>
+			<type>1</type>
+			<location>C:/Users/ya bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/StackTrace.h</location>
+		</link>
+	</linkedResources>
+</projectDescription>

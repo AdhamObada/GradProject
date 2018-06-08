@@ -8,7 +8,7 @@
 
 #include "std_types.h"
 #include "tm4c123gh6pm.h"
-extern char s;
+char dummy[150];  //zebala
 void uart3_init(void){
     SYSCTL_RCGCUART_R |= 0x08;
        SYSCTL_RCGCGPIO_R |= 0x00000004;
@@ -41,125 +41,104 @@ void uart4_init(void){
          UART4_IM_R|=(1<<4);
          NVIC_EN1_R|=(1<<28);
 }
-char UART_InChar(void){//reads character
+char UART3_InChar(void){//reads character
   while(((UART3_FR_R&UART_FR_RXFE) != 0));
   return((unsigned char)(UART3_DR_R&0xFF));
 }
-void read_str(char string[])
+char UART4_InChar(void){//reads character
+  while(((UART4_FR_R&UART_FR_RXFE) != 0));
+  return((unsigned char)(UART4_DR_R&0xFF));
+}
+void read3_str(char string[])
 {
     char n=0;
-    string[n]=UART_InChar();
-    string[n+1]=UART_InChar();
+    string[n]=UART3_InChar();
+    string[n+1]=UART3_InChar();
     n=1;
     while(!(string[n]=='K' && string[n-1]=='O'))
     {
         n++;
-        string[n]=UART_InChar();
+        string[n]=UART3_InChar();
     }
 
     string[n+2]='\0';
 }
+void read4_str(char string[])
+{
+    char n=0;
+    string[n]=UART4_InChar();
+    string[n+1]=UART4_InChar();
+    n=1;
+    while(!(string[n]=='K' && string[n-1]=='O'))
+    {
+        n++;
+        string[n]=UART4_InChar();
+    }
 
-void UART_OutChar(uint8 data){  //sends character
+    string[n+2]='\0';
+}
+void UART3_OutChar(uint8 data){  //sends character
   while((UART3_FR_R&UART_FR_TXFF) != 0);
   UART3_DR_R = data;
 }
 
-void send_str (char string[])
+void UART4_OutChar(uint8 data){  //sends character
+  while((UART4_FR_R&UART_FR_TXFF) != 0);
+  UART4_DR_R = data;
+}
+
+void send_str3 (char string[])
 {
    char i=0;
     while(string[i]!='\0')
     {
-        UART_OutChar(string[i]);
+        UART3_OutChar(string[i]);
         i++;
     }
 }
-void send_str_mqtt(char string[]){
-    s=0;
+void send_str4 (char string[])
+{
+   char i=0;
+    while(string[i]!='\0')
+    {
+        UART4_OutChar(string[i]);
+        i++;
+    }
+}
+void send_str3_mqtt(char string[]){
+   char s=0;
    while(s<200){
-       UART_OutChar(string[s]);
+       UART3_OutChar(string[s]);
        s++;
    }
 }
-/*void read_str_user (char string[])
-{
-   char i=0;
-    string[i]=UART_InChar();
-    if(string[i]=='0'){
-        i++;
-        string[i]=UART_InChar();
-        while(string[i]!='#'){
-            i++;
-            string[i]=UART_InChar();
-        }
-    }
-
-    string[i]='\0';
+void send_str4_mqtt(char string[]){
+   char s=0;
+   while(s<200){
+       UART4_OutChar(string[s]);
+       s++;
+   }
 }
-void read_str_user( char str1[],char str2[])
-{
-    char j=0,i=0;
-    str1[i]=UART_InChar();
-    while((str1[i]>=32 && str1[i]<=34)||(str1[i]>=36 && str1[i]<=127)){
-        if(UART3_FR_R&UART_FR_RXFE==1)
-            return;
-        else{
-            i++;
-            str1[i]=UART_InChar();
-        }
-    }
-    if(str1[i]=='#'){
-        str2[j]=UART_InChar();
-        while(str2[j]!='#'){
-            j++;
-            str2[j]=UART_InChar();
-        }
-    }
-    str2[j]='\0';
-}
-void read_str_user(char string[]){
-    char count=0;
-    string[count]=UART_InChar();
-    while((UART3_FR_R&UART_FR_RXFE) != 0){
-        count++;
-        string[count]=UART_InChar();
-    }
-    string[count]='\0';
-}*/
-void read_str_user (char string[]){
+void read_str3_user (char string[]){
     char n=0;
-    while(UART_InChar()!='#');
-    string[n]=UART_InChar();
+    while(UART3_InChar()!='#');
+    string[n]=UART3_InChar();
     while(string[n]!='#'){
         n++;
-        string[n]=UART_InChar();
+        string[n]=UART3_InChar();
     }
     string[n]='\0';
 }
-void read_conn (char string[]){
+void read_str4_user (char string[]){
     char n=0;
-    string[n]=UART_InChar();
-    while(!(string[n]=='T'&&string[n-1]=='C'&&string[n-2]=='E'&&string[n-3]=='N'&&string[n-4]=='N'&&string[n-5]=='O'&&string[n-6]=='C')){
+    while(UART4_InChar()!='#');
+    string[n]=UART4_InChar();
+    while(string[n]!='#'){
         n++;
-        string[n]=UART_InChar();
+        string[n]=UART4_InChar();
     }
+    string[n]='\0';
 }
-/*void read_dot(char string[]){
-    char n=0;
-        string[n]=UART_InChar();
-        while(!(string[n]=='.'&&string[n-1]=='.'&&string[n-2]=='.')){
-            n++;
-            string[n]=UART_InChar();
-        }
-}
-void read_bytes(char string[]){
-    char n=0;
-           string[n]=UART_InChar();
-           while(!(string[n]=='s'&&string[n-1]=='e'&&string[n-2]=='t'&&string[n-3]=='y'&&string[n-4]=='b')){
-               n++;
-               string[n]=UART_InChar();
-           }
-}*/
 void Delayms(unsigned long mseconds){
   unsigned long volatile time;
   if(mseconds > 2500000)
@@ -170,18 +149,28 @@ void Delayms(unsigned long mseconds){
   }
 }
 
-
-
-void read_str_mqtt(char* string){
-    char n=0;
-        string[n]=UART_InChar();
-        string[n+1]=UART_InChar();
-        n=1;
-        while(string[n]!='\0' || string[n-1]!='\0')
-        {
-            n++;
-            string[n]=UART_InChar();
-        }
-
-        string[n+2]='\0';
+void mcu_pub_init(void){
+        send_str3("AT+CWMODE=3\r\n");
+        read3_str(dummy);
+        Delayms(1000);
+        send_str3("AT+CIPMUX=1\r\n");
+        read3_str(dummy);
+        Delayms(1000);
+        send_str3("AT+CIPSERVER=1,6969\r\n");
+        read3_str(dummy);
+        Delayms(1000);
+        send_str3("AT+CWJAP=\"NotCisco\",\"MeenEhabDah?!!\"\r\n");
+        read3_str(dummy);
+        Delayms(2000);
+}
+void mcu_sub_init(void){
+        send_str4("AT+CWMODE=1\r\n");
+        read4_str(dummy);
+        Delayms(1000);
+        send_str4("AT+CIPMUX=1\r\n");
+        read4_str(dummy);
+        Delayms(1000);
+        send_str4("AT+CWJAP=\"NotCisco\",\"MeenEhabDah?!!\"\r\n");
+        read4_str(dummy);
+        Delayms(1000);
 }

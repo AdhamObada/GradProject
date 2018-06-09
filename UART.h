@@ -20,7 +20,7 @@ void UART4_OutChar(uint8 data);
 void send_str3 (char* str);
 void send_str4 (char* str);
 void read_str3_user (char string[]);
-void read_str4_user (char string[]);
+char read_str4_user (char string[]);
 void send_str3_mqtt(char string[]);
 void send_str4_mqtt(char string[]);
 void Delayms(unsigned long mseconds);

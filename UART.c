@@ -9,6 +9,7 @@
 #include "std_types.h"
 #include "tm4c123gh6pm.h"
 char dummy[150];  //zebala
+
 void uart3_init(void){
     SYSCTL_RCGCUART_R |= 0x08;
        SYSCTL_RCGCGPIO_R |= 0x00000004;
@@ -121,15 +122,15 @@ void send_str4_mqtt(char string[]){
 }
 void read_str3_user (char string[]){
     char n=0;
-    while(UART3_InChar()!='#');
-    string[n]=UART3_InChar();
-    while(string[n]!='#'){
-        n++;
-        string[n]=UART3_InChar();
-    }
-    string[n]='\0';
+       while(UART3_InChar()!='#');
+       string[n]=UART3_InChar();
+       while(string[n]!='#'){
+           n++;
+           string[n]=UART3_InChar();
+       }
+       string[n]='\0';
 }
-void read_str4_user (char string[]){
+char read_str4_user (char string[]){
     char n=0;
     while(UART4_InChar()!='#');
     string[n]=UART4_InChar();
@@ -138,6 +139,7 @@ void read_str4_user (char string[]){
         string[n]=UART4_InChar();
     }
     string[n]='\0';
+    return n;
 }
 void Delayms(unsigned long mseconds){
   unsigned long volatile time;

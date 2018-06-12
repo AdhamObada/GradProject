@@ -30,7 +30,7 @@ extern char dummy[150];
 char len;
 void UART4_Handler(void)
 {
-    IntMasterDisable();
+    //IntMasterDisable();
     UART4_ICR_R |= (1<<4);
     len=read_str4_user(received_sub);
     for(j=0;j<4;j++)
@@ -45,12 +45,14 @@ void UART4_Handler(void)
     send_str3("\r\n");
     Delayms(50);
     send_str3(received_sub);
-    IntMasterEnable();
+    //IntMasterEnable();
 }
 void UART3_Handler(void){
-    IntMasterDisable();
+    //IntMasterDisable();
+    test1[2]='z';
     UART3_ICR_R |= (1<<4);
     read_str3_user(reading);
+    test1[3]='z';
     char s;
     for (s=0 ; s<4;s++)
     {
@@ -64,20 +66,21 @@ void UART3_Handler(void){
     }
     Delayms(250);
     MyPublish(reading);
-    IntMasterEnable();
+    //IntMasterEnable();
 }
 int main()
 {
-    IntMasterDisable();
-   // uart3_init();
-    uart4_init();
-   // mcu_pub_init();
-    mcu_sub_init();
-    test1[0]='a';
-    //IntMasterDisable();
-   // MySub_Init();
-   // test1[0]='Z';
     IntMasterEnable();
+    uart3_init();
+    uart4_init();
+    mcu_pub_init();
+    test1[0]='z';
+    mcu_sub_init();
+    test1[1]='z';
+    //IntMasterDisable();
+    MySub_Init();
+   // test1[0]='Z';
+    //IntMasterEnable();
 
     while(true)
     {

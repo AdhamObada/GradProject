@@ -66,7 +66,7 @@ void MySub_Init(){
 
 
         IntMasterDisable();
-        send_str4("AT+CIPSTART=4,\"TCP\",\"iot.eclipse.org\",1883,1200\r\n");
+        send_str4("AT+CIPSTART=\"TCP\",\"iot.eclipse.org\",1883,1200\r\n");
         Delayms(1000);
 
 
@@ -75,7 +75,7 @@ void MySub_Init(){
         data.cleansession = 1;
 
        int len = MQTTSerialize_connect(buf, buflen, &data);
-        send_str4("AT+CIPSEND=4,16\r\n");
+        send_str4("AT+CIPSEND=16\r\n");
         Delayms(50);
         send_str4_mqtt(buf);
         Delayms(1000);
@@ -84,9 +84,9 @@ void MySub_Init(){
 
        len = MQTTSerialize_subscribe(buf1, buflen1, 0, msgid, 1, &topicString, &req_qos); //new buf for sub packet
 
-       send_str4("AT+CIPSEND=4,13\r\n");
+       send_str4("AT+CIPSEND=13\r\n");
        Delayms(50);
        send_str4_mqtt(buf1);
        Delayms(1000);
-       IntMasterEnable();
+       //IntMasterEnable();
 }

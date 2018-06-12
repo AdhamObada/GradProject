@@ -9,6 +9,7 @@
 #include "std_types.h"
 #include "tm4c123gh6pm.h"
 char dummy[150];  //zebala
+char dummy1[150];
 
 void uart3_init(void){
     SYSCTL_RCGCUART_R |= 0x08;
@@ -163,16 +164,16 @@ void mcu_pub_init(void){
         Delayms(1000);
         send_str3("AT+CWJAP=\"NotCisco\",\"MeenEhabDah?!!\"\r\n");
         read3_str(dummy);
-        Delayms(2000);
+        Delayms(1000);
 }
 void mcu_sub_init(void){
-        send_str4("AT+CWMODE=1\r\n");
-        read4_str(dummy);
+        send_str4("AT+CWMODE=3\r\n");
+        read4_str(dummy1);
         Delayms(1000);
-        send_str4("AT+CIPMUX=1\r\n");
-        read4_str(dummy);
-        Delayms(1000);
+        //send_str4("AT+CIPMUX=0\r\n");
+        //read4_str(dummy1);
+        //Delayms(1000);
         send_str4("AT+CWJAP=\"NotCisco\",\"MeenEhabDah?!!\"\r\n");
-        read4_str(dummy);
+        read4_str(dummy1);
         Delayms(1000);
 }

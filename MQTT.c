@@ -88,5 +88,6 @@ void MySub_Init(){
        Delayms(50);
        send_str4_mqtt(buf1);
        Delayms(1000);
-       //IntMasterEnable();
+     //  IntMasterEnable();
+       test2[1]='z';
 }

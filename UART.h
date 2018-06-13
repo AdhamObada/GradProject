@@ -7,7 +7,8 @@
 #include "std_types.h"
 #ifndef UART_H_
 #define UART_H_
-
+extern char dummy[150];  //zebala
+extern char dummy1[150];
 
 void uart3_init(void);
 void uart4_init(void);

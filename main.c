@@ -28,23 +28,24 @@ short connection_counter=-1;
 char connection[4];
 extern char dummy[150];
 char len;
+char debug=1;
 void UART4_Handler(void)
 {
-    //IntMasterDisable();
+  //  IntMasterDisable();
+    test1[3]='z';
     UART4_ICR_R |= (1<<4);
-    len=read_str4_user(received_sub);
+    if(debug==1){
+        debug=0;
+    }
+    else if(debug==0){
+        test1[9]='z';
+     len=read_str4_user(received_sub);
     for(j=0;j<4;j++)
     {
         if(connection[j]==received_sub[1])
             break;
     }
-    send_str3("AT+CIPSEND="); //we are using uart3 to send payload to the sensors not the user.
-    send_str3(&j);
-    send_str3(",");
-    send_str3(&len);
-    send_str3("\r\n");
-    Delayms(50);
-    send_str3(received_sub);
+    }
     //IntMasterEnable();
 }
 void UART3_Handler(void){
@@ -66,11 +67,11 @@ void UART3_Handler(void){
     }
     Delayms(250);
     MyPublish(reading);
-    //IntMasterEnable();
+   // IntMasterEnable();
 }
 int main()
 {
-    IntMasterEnable();
+    //IntMasterDisable();
     uart3_init();
     uart4_init();
     mcu_pub_init();
@@ -79,8 +80,8 @@ int main()
     test1[1]='z';
     //IntMasterDisable();
     MySub_Init();
-   // test1[0]='Z';
-    //IntMasterEnable();
+    test1[0]='a';
+    IntMasterEnable();
 
     while(true)
     {

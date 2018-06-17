@@ -1,0 +1,426 @@
+******************************************************************************
+                  TI ARM Linker PC v16.9.6                     
+******************************************************************************
+>> Linked Thu Jun 14 18:18:24 2018
+
+OUTPUT FILE NAME:   <Gateway.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00001ad1
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00001dc0  0003e240  R  X
+  SRAM                  20000000   00008000  00000444  00007bbc  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00001dc0   00001dc0    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00001a28   00001a28    r-x .text
+  00001c94    00001c94    000000f4   000000f4    r-- .const
+  00001d88    00001d88    00000038   00000038    r-- .cinit
+20000000    20000000    00000444   00000000    rw-
+  20000000    20000000    0000022c   00000000    rw- .bss
+  2000022c    2000022c    00000200   00000000    rw- .stack
+  2000042c    2000042c    00000018   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00001a28     
+                  0000026c    000005bc     UART.obj (.text)
+                  00000828    00000598     MQTTPacket.obj (.text)
+                  00000dc0    000003ac     MQTTConnectClient.obj (.text)
+                  0000116c    000002bc     MQTT.obj (.text)
+                  00001428    00000228     MQTTSerializePublish.obj (.text)
+                  00001650    00000218     MQTTSubscribeClient.obj (.text)
+                  00001868    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  00001904    0000007a                                   : memset_t2.obj (.text)
+                  0000197e    00000002                                   : mpu_init.obj (.text)
+                  00001980    00000078     main.obj (.text)
+                  000019f8    00000070     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
+                  00001a68    00000068                                   : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  00001ad0    00000054                                   : boot.obj (.text)
+                  00001b24    00000054                                   : exit.obj (.text)
+                  00001b78    0000004c                                   : cpy_tbl.obj (.text)
+                  00001bc4    0000002c                                   : strncmp.obj (.text)
+                  00001bf0    00000018                                   : args_main.obj (.text)
+                  00001c08    00000014                                   : _lock.obj (.text)
+                  00001c1c    00000014                                   : strlen.obj (.text)
+                  00001c30    00000010     driverlib.lib : interrupt.obj (.text:IntMasterDisable)
+                  00001c40    00000010                   : interrupt.obj (.text:IntMasterEnable)
+                  00001c50    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  00001c5e    0000000c     driverlib.lib : cpu.obj (.text:CPUcpsid)
+                  00001c6a    0000000c                   : cpu.obj (.text:CPUcpsie)
+                  00001c76    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  00001c82    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00001c8e    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
+                  00001c92    00000002                                   : startup.obj (.text)
+
+.const     0    00001c94    000000f4     
+                  00001c94    00000058     MQTT.obj (.const:$P$T0$1)
+                  00001cec    00000058     MQTT.obj (.const:$P$T2$3)
+                  00001d44    0000000c     MQTT.obj (.const:$P$T1$2)
+                  00001d50    0000000c     MQTT.obj (.const:$P$T3$4)
+                  00001d5c    00000004     MQTTConnectClient.obj (.const:$P$T0$1)
+                  00001d60    00000004     MQTTPacket.obj (.const:$P$T0$1)
+                  00001d64    00000004     MQTTSerializePublish.obj (.const:$P$T0$1)
+                  00001d68    00000004     MQTTSubscribeClient.obj (.const:$P$T0$1)
+                  00001d6c    00000004     MQTTConnectClient.obj (.const:$P$T1$2)
+                  00001d70    00000004     MQTTPacket.obj (.const:$P$T1$2)
+                  00001d74    00000004     MQTTSerializePublish.obj (.const:$P$T1$2)
+                  00001d78    00000004     MQTTSubscribeClient.obj (.const:$P$T1$2)
+                  00001d7c    00000004     MQTTConnectClient.obj (.const:$P$T2$3)
+                  00001d80    00000004     MQTTConnectClient.obj (.const:$P$T3$4)
+                  00001d84    00000004     MQTTConnectClient.obj (.const:$P$T4$5)
+
+.cinit     0    00001d88    00000038     
+                  00001d88    00000011     (.cinit..data.load) [load image, compression = lzss]
+                  00001d99    00000003     --HOLE-- [fill = 0]
+                  00001d9c    0000000c     (__TI_handler_table)
+                  00001da8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00001db0    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.bss       0    20000000    0000022c     UNINITIALIZED
+                  20000000    000000c8     (.common:received_sub)
+                  200000c8    00000098     (.common:dummy1)
+                  20000160    00000064     (.common:test1)
+                  200001c4    00000064     (.common:test2)
+                  20000228    00000004     MQTTPacket.obj (.bss)
+
+.stack     0    2000022c    00000200     UNINITIALIZED
+                  2000022c    00000200     --HOLE--
+
+.data      0    2000042c    00000018     UNINITIALIZED
+                  2000042c    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
+                  20000438    00000008                                   : _lock.obj (.data:$O1$$)
+                  20000440    00000004                                   : stkdepth_vars.obj (.data)
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       UART.obj                       1468   0         152    
+       MQTTPacket.obj                 1432   8         4      
+       MQTT.obj                       700    200       100    
+       MQTTConnectClient.obj          940    20        0      
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       MQTTSerializePublish.obj       552    8         0      
+       MQTTSubscribeClient.obj        536    8         0      
+       main.obj                       120    0         300    
+    +--+------------------------------+------+---------+---------+
+       Total:                         5760   864       556    
+                                                              
+    C:/ti/TivaWare_C_Series-2.1.3.156/driverlib/ccs/Debug/driverlib.lib
+       interrupt.obj                  32     0         0      
+       cpu.obj                        24     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         56     0         0      
+                                                              
+    E:\gam3a\CC\ccsv7\tools\compiler\ti-cgt-arm_16.9.6.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.obj                  156    0         0      
+       memset_t2.obj                  122    0         0      
+       autoinit.obj                   112    0         0      
+       copy_decompress_lzss.obj       104    0         0      
+       exit.obj                       84     0         12     
+       boot.obj                       84     0         0      
+       cpy_tbl.obj                    76     0         0      
+       strncmp.obj                    44     0         0      
+       _lock.obj                      20     0         8      
+       args_main.obj                  24     0         0      
+       strlen.obj                     20     0         0      
+       copy_decompress_none.obj       14     0         0      
+       copy_zero_init.obj             12     0         0      
+       pre_init.obj                   4      0         0      
+       stkdepth_vars.obj              0      0         4      
+       mpu_init.obj                   2      0         0      
+       startup.obj                    2      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         880    0         24     
+                                                              
+       Stack:                         0      0         512    
+       Linker Generated:              0      53        0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   6696   917       1092   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00001db0 records: 2, size/record: 8, table size: 16
+	.data: load addr=00001d88, load size=00000011 bytes, run addr=2000042c, run size=00000018 bytes, compression=lzss
+	.bss: load addr=00001da8, load size=00000008 bytes, run addr=20000000, run size=0000022c bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00001d9c records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+00001b25  C$$EXIT                        
+00001c5f  CPUcpsid                       
+00001c6b  CPUcpsie                       
+00000721  Delayms                        
+00001c31  IntMasterDisable               
+00001c41  IntMasterEnable                
+00001033  MQTTDeserialize_connack        
+000017b7  MQTTDeserialize_suback         
+0000087f  MQTTPacket_decode              
+00000965  MQTTPacket_decodeBuf           
+00000829  MQTTPacket_encode              
+00000b41  MQTTPacket_equals              
+000008e7  MQTTPacket_len                 
+00000ba9  MQTTPacket_read                
+00000caf  MQTTPacket_readnb              
+0000153d  MQTTSerialize_ack              
+00000e79  MQTTSerialize_connect          
+00000dc1  MQTTSerialize_connectLength    
+00001123  MQTTSerialize_disconnect       
+00001139  MQTTSerialize_pingreq          
+000015d5  MQTTSerialize_puback           
+00001623  MQTTSerialize_pubcomp          
+00001467  MQTTSerialize_publish          
+00001429  MQTTSerialize_publishLength    
+000015f9  MQTTSerialize_pubrel           
+000016b5  MQTTSerialize_subscribe        
+00001651  MQTTSerialize_subscribeLength  
+000010bb  MQTTSerialize_zero             
+00000b15  MQTTstrlen                     
+0000116d  MyPublish                      
+00001271  MySub_Init                     
+00001c83  ResetISR                       
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+00001981  SystemInit                     
+000003cb  UART3_InChar                   
+000004c7  UART3_OutChar                  
+00001983  UART4_Handler                  
+000003df  UART4_InChar                   
+000004e3  UART4_OutChar                  
+000004ff  UART5_OutChar                  
+2000042c  __STACK_END                    
+00000200  __STACK_SIZE                   
+2000042c  __STACK_TOP                    
+00001db0  __TI_CINIT_Base                
+00001dc0  __TI_CINIT_Limit               
+00001d9c  __TI_Handler_Table_Base        
+00001da8  __TI_Handler_Table_Limit       
+000019f9  __TI_auto_init                 
+2000042c  __TI_cleanup_ptr               
+00001a69  __TI_decompress_lzss           
+00001c51  __TI_decompress_none           
+20000430  __TI_dtors_ptr                 
+20000434  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00000000  __TI_static_base__             
+00001c77  __TI_zero_init                 
+00001905  __aeabi_memclr                 
+00001905  __aeabi_memclr4                
+00001905  __aeabi_memclr8                
+00001869  __aeabi_memcpy                 
+00001869  __aeabi_memcpy4                
+00001869  __aeabi_memcpy8                
+00001907  __aeabi_memset                 
+00001907  __aeabi_memset4                
+00001907  __aeabi_memset8                
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+0000197f  __mpu_init                     
+2000022c  __stack                        
+00001bf1  _args_main                     
+00001ad1  _c_int00                       
+20000438  _lock                          
+00001c17  _nop                           
+00001c0f  _register_lock                 
+00001c09  _register_unlock               
+00001c93  _system_post_cinit             
+00001c8f  _system_pre_init               
+2000043c  _unlock                        
+00001b29  abort                          
+ffffffff  binit                          
+0000092d  bufchar                        
+00001b79  copy_in                        
+200000c8  dummy1                         
+00001b31  exit                           
+00000000  g_pfnVectors                   
+00000a51  getLenStringLen                
+000019ab  main                           
+20000440  main_func_sp                   
+00000751  mcu_pub_init                   
+0000078d  mcu_sub_init                   
+00001869  memcpy                         
+0000190d  memset                         
+000003f3  read3_str                      
+0000045d  read4_str                      
+000009a3  readChar                       
+0000097b  readInt                        
+00000abb  readMQTTLenString              
+0000065d  read_str3_user                 
+000006cd  read_str4_user                 
+20000000  received_sub                   
+0000054b  send_str3                      
+000005ab  send_str3_mqtt                 
+0000057b  send_str4                      
+00000605  send_str4_mqtt                 
+0000051b  send_str5                      
+00001c1d  strlen                         
+00001bc5  strncmp                        
+20000160  test1                          
+200001c4  test2                          
+0000026d  uart3_init                     
+00000349  uart4_init                     
+000002db  uart5_init                     
+00000a23  writeCString                   
+000009c3  writeChar                      
+000009e3  writeInt                       
+00000a6b  writeMQTTString                
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00000000  __TI_static_base__             
+00000000  g_pfnVectors                   
+00000200  __STACK_SIZE                   
+0000026d  uart3_init                     
+000002db  uart5_init                     
+00000349  uart4_init                     
+000003cb  UART3_InChar                   
+000003df  UART4_InChar                   
+000003f3  read3_str                      
+0000045d  read4_str                      
+000004c7  UART3_OutChar                  
+000004e3  UART4_OutChar                  
+000004ff  UART5_OutChar                  
+0000051b  send_str5                      
+0000054b  send_str3                      
+0000057b  send_str4                      
+000005ab  send_str3_mqtt                 
+00000605  send_str4_mqtt                 
+0000065d  read_str3_user                 
+000006cd  read_str4_user                 
+00000721  Delayms                        
+00000751  mcu_pub_init                   
+0000078d  mcu_sub_init                   
+00000829  MQTTPacket_encode              
+0000087f  MQTTPacket_decode              
+000008e7  MQTTPacket_len                 
+0000092d  bufchar                        
+00000965  MQTTPacket_decodeBuf           
+0000097b  readInt                        
+000009a3  readChar                       
+000009c3  writeChar                      
+000009e3  writeInt                       
+00000a23  writeCString                   
+00000a51  getLenStringLen                
+00000a6b  writeMQTTString                
+00000abb  readMQTTLenString              
+00000b15  MQTTstrlen                     
+00000b41  MQTTPacket_equals              
+00000ba9  MQTTPacket_read                
+00000caf  MQTTPacket_readnb              
+00000dc1  MQTTSerialize_connectLength    
+00000e79  MQTTSerialize_connect          
+00001033  MQTTDeserialize_connack        
+000010bb  MQTTSerialize_zero             
+00001123  MQTTSerialize_disconnect       
+00001139  MQTTSerialize_pingreq          
+0000116d  MyPublish                      
+00001271  MySub_Init                     
+00001429  MQTTSerialize_publishLength    
+00001467  MQTTSerialize_publish          
+0000153d  MQTTSerialize_ack              
+000015d5  MQTTSerialize_puback           
+000015f9  MQTTSerialize_pubrel           
+00001623  MQTTSerialize_pubcomp          
+00001651  MQTTSerialize_subscribeLength  
+000016b5  MQTTSerialize_subscribe        
+000017b7  MQTTDeserialize_suback         
+00001869  __aeabi_memcpy                 
+00001869  __aeabi_memcpy4                
+00001869  __aeabi_memcpy8                
+00001869  memcpy                         
+00001905  __aeabi_memclr                 
+00001905  __aeabi_memclr4                
+00001905  __aeabi_memclr8                
+00001907  __aeabi_memset                 
+00001907  __aeabi_memset4                
+00001907  __aeabi_memset8                
+0000190d  memset                         
+0000197f  __mpu_init                     
+00001981  SystemInit                     
+00001983  UART4_Handler                  
+000019ab  main                           
+000019f9  __TI_auto_init                 
+00001a69  __TI_decompress_lzss           
+00001ad1  _c_int00                       
+00001b25  C$$EXIT                        
+00001b29  abort                          
+00001b31  exit                           
+00001b79  copy_in                        
+00001bc5  strncmp                        
+00001bf1  _args_main                     
+00001c09  _register_unlock               
+00001c0f  _register_lock                 
+00001c17  _nop                           
+00001c1d  strlen                         
+00001c31  IntMasterDisable               
+00001c41  IntMasterEnable                
+00001c51  __TI_decompress_none           
+00001c5f  CPUcpsid                       
+00001c6b  CPUcpsie                       
+00001c77  __TI_zero_init                 
+00001c83  ResetISR                       
+00001c8f  _system_pre_init               
+00001c93  _system_post_cinit             
+00001d9c  __TI_Handler_Table_Base        
+00001da8  __TI_Handler_Table_Limit       
+00001db0  __TI_CINIT_Base                
+00001dc0  __TI_CINIT_Limit               
+20000000  received_sub                   
+200000c8  dummy1                         
+20000160  test1                          
+200001c4  test2                          
+2000022c  __stack                        
+2000042c  __STACK_END                    
+2000042c  __STACK_TOP                    
+2000042c  __TI_cleanup_ptr               
+20000430  __TI_dtors_ptr                 
+20000434  __TI_enable_exit_profile_output
+20000438  _lock                          
+2000043c  _unlock                        
+20000440  main_func_sp                   
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+
+[119 symbols]

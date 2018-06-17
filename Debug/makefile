@@ -134,34 +134,34 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-Test.out \
+Gateway.out \
 
 EXE_OUTPUTS__QUOTED += \
-"Test.out" \
+"Gateway.out" \
 
 BIN_OUTPUTS += \
-Test.hex \
+Gateway.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"Test.hex" \
+"Gateway.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "Test.out"
+	@$(MAKE) --no-print-directory -Onone "Gateway.out"
 
 # Tool invocations
-Test.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+Gateway.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Test.map" --heap_size=0 --stack_size=512 -i"E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/lib" -i"C:/ti/TivaWare_C_Series-2.1.3.156" -i"E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Test_linkInfo.xml" --rom_model -o "Test.out" $(ORDERED_OBJS)
+	"E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Gateway.map" --heap_size=0 --stack_size=512 -i"E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/lib" -i"C:/ti/TivaWare_C_Series-2.1.3.156" -i"E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Gateway_linkInfo.xml" --rom_model -o "Gateway.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-Test.hex: $(EXE_OUTPUTS)
+Gateway.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: ARM Hex Utility'
-	"E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armhex"  -o "Test.hex" $(EXE_OUTPUTS__QUOTED)
+	"E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armhex"  -o "Gateway.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 

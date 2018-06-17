@@ -8,7 +8,7 @@
 #ifndef MQTT_H_
 #define MQTT_H_
 
-void MyPublish(char* reading);
+void MyPublish(char reading);
 void MySub_Init(void);
 
 

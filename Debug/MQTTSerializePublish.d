@@ -12,9 +12,7 @@ MQTTSerializePublish.obj: E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS
 MQTTSerializePublish.obj: E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/linkage.h
 MQTTSerializePublish.obj: E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdarg.h
 MQTTSerializePublish.obj: C:/Users/ya\ bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTPacket.h
-MQTTSerializePublish.obj: C:/Users/ya\ bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/StackTrace.h
 MQTTSerializePublish.obj: E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/string.h
-MQTTSerializePublish.obj: E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/linkage.h
 
 C:/Users/ya\ bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTSerializePublish.c: 
 C:/Users/ya\ bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTPacket.h: 
@@ -28,6 +26,4 @@ E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdio.h:
 E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/linkage.h: 
 E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdarg.h: 
 C:/Users/ya\ bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/MQTTPacket.h: 
-C:/Users/ya\ bedan/git/paho.mqtt.embedded-c/MQTTPacket/src/StackTrace.h: 
 E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/string.h: 
-E:/gam3a/CC/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/linkage.h: 

@@ -11,15 +11,16 @@
 #include <stdbool.h>
 #include "driverlib/interrupt.h"
 char test2[100];
-void MyPublish(char* reading){
+void MyPublish(char reading){
     test2[0]='s';
     MQTTPacket_connectData data = MQTTPacket_connectData_initializer;
    char buf[200];
    char buf1[200];
    char buf2[200];
     MQTTString topicString = MQTTString_initializer;
-    char* payload = reading;
-    int payloadlen = strlen(payload);
+    char payload = reading;
+  //  int payloadlen = strlen(payload);
+    int payloadlen =1;
     int buflen = sizeof(buf);
     int buflen1= sizeof(buf1);
     int buflen2= sizeof(buf2);
@@ -32,7 +33,7 @@ void MyPublish(char* reading){
    int len = MQTTSerialize_connect(buf, buflen, &data); /* 1 */
    send_str3("AT+CIPSTART=4,\"TCP\",\"iot.eclipse.org\",1883,600\r\n");
    Delayms(1000);
-   send_str3("AT+CIPSEND=4,16\r\n");  // reading 6
+   send_str3("AT+CIPSEND=4,16\r\n");
    Delayms(50);
    send_str3_mqtt(buf);
    Delayms(1000);
@@ -40,7 +41,7 @@ void MyPublish(char* reading){
 
 
     len += MQTTSerialize_publish(buf1,buflen1, 0, 0, 0, 0, topicString, payload, payloadlen); /* 2 */
-    send_str3("AT+CIPSEND=4,16\r\n");
+    send_str3("AT+CIPSEND=4,11\r\n");      //reading 1
     Delayms(50);
     send_str3_mqtt(buf1);
     Delayms(1000);
@@ -88,6 +89,6 @@ void MySub_Init(){
        Delayms(50);
        send_str4_mqtt(buf1);
        Delayms(1000);
-     //  IntMasterEnable();
+       IntMasterEnable();
        test2[1]='z';
 }

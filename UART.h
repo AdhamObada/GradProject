@@ -30,4 +30,7 @@ void mcu_pub_init(void);
 void send_str5 (char string[]);
 void UART5_OutChar(uint8 data);
 void uart5_init(void);
+void send_str5_mqtt(char string[]);
+char UART5_InChar(void);
+void read5_str(char string[]);
 #endif /* UART_H_ */

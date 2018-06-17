@@ -36,7 +36,7 @@ void uart5_init(void){
        UART5_CTL_R |= UART_CTL_UARTEN;
      GPIO_PORTE_AFSEL_R |= 0x30;
        GPIO_PORTE_DEN_R |= 0x30;
-     GPIO_PORTE_PCTL_R =(GPIO_PORTC_PCTL_R&0xFF00FFFF)+0x00110000;
+     GPIO_PORTE_PCTL_R =(GPIO_PORTE_PCTL_R&0xFF00FFFF)+0x00110000;
      GPIO_PORTE_AMSEL_R &= ~0x30;
 }
 void uart4_init(void){
@@ -62,6 +62,10 @@ char UART4_InChar(void){//reads character
   while(((UART4_FR_R&UART_FR_RXFE) != 0));
   return((unsigned char)(UART4_DR_R&0xFF));
 }
+char UART5_InChar(void){//reads character
+  while(((UART5_FR_R&UART_FR_RXFE) != 0));
+  return((unsigned char)(UART5_DR_R&0xFF));
+}
 void read3_str(char string[])
 {
     char n=0;
@@ -86,6 +90,20 @@ void read4_str(char string[])
     {
         n++;
         string[n]=UART4_InChar();
+    }
+
+    string[n+2]='\0';
+}
+void read5_str(char string[])
+{
+    char n=0;
+    string[n]=UART5_InChar();
+    string[n+1]=UART5_InChar();
+    n=1;
+    while(!(string[n]=='K' && string[n-1]=='O'))
+    {
+        n++;
+        string[n]=UART5_InChar();
     }
 
     string[n+2]='\0';
@@ -137,6 +155,13 @@ void send_str3_mqtt(char string[]){
        s++;
    }
 }
+void send_str5_mqtt(char string[]){
+   char s=0;
+   while(s<200){
+       UART5_OutChar(string[s]);
+       s++;
+   }
+}
 void send_str4_mqtt(char string[]){
    char s=0;
    while(s<200){
@@ -176,12 +201,16 @@ void Delayms(unsigned long mseconds){
 
 void mcu_pub_init(void){
         send_str5("AT+CWMODE=3\r\n");
+        read5_str(dummy);
         Delayms(1000);
         send_str5("AT+CIPMUX=1\r\n");
+        read5_str(dummy);
         Delayms(1000);
         send_str5("AT+CIPSERVER=1,6969\r\n");
+        read5_str(dummy);
         Delayms(1000);
         send_str5("AT+CWJAP=\"NotCisco\",\"MeenEhabDah?!!\"\r\n");
+        read5_str(dummy);
         Delayms(1000);
 }
 void mcu_sub_init(void){

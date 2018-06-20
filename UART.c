@@ -23,8 +23,6 @@ void uart3_init(void){
        GPIO_PORTC_DEN_R |= 0xC0;             // enable digital I/O on PC7 and PC6
      GPIO_PORTC_PCTL_R = (GPIO_PORTC_PCTL_R&0x00FFFFFF)+0x11000000;    // configure PC7 and PC6 as UART
      GPIO_PORTC_AMSEL_R &= ~0xC0;          // disable analog functionality on PC7 and PC6
-    // UART3_IM_R|=(1<<4);
-     //NVIC_EN1_R|=(1<<27);
 }
 void uart5_init(void){
     SYSCTL_RCGCUART_R |= (1<<5);
@@ -209,7 +207,7 @@ void mcu_pub_init(void){
         send_str5("AT+CIPSERVER=1,6969\r\n");
         read5_str(dummy);
         Delayms(1000);
-        send_str5("AT+CWJAP=\"NotCisco\",\"MeenEhabDah?!!\"\r\n");
+        send_str5("AT+CWJAP=\"Adham's iPhone\",\"aboelhamz\"\r\n");
         read5_str(dummy);
         Delayms(1000);
 }
@@ -217,7 +215,7 @@ void mcu_sub_init(void){
         send_str4("AT+CWMODE=3\r\n");
         read4_str(dummy1);
         Delayms(1000);
-        send_str4("AT+CWJAP=\"NotCisco\",\"MeenEhabDah?!!\"\r\n");
+        send_str4("AT+CWJAP=\"Adham's iPhone\",\"aboelhamz\"\r\n");
         read4_str(dummy1);
         Delayms(1000);
 }

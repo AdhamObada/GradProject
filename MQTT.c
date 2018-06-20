@@ -40,8 +40,7 @@ void MyPublish(char* reading,char x){
     send_str5_mqtt(buf);
     Delayms(1000);
     topicString.cstring = "MyTemp";
-
-
+    test2[1]='z';
     len += MQTTSerialize_publish(buf1,buflen1, 0, 0, 0, 0, topicString, payload, payloadlen); /* 2 */
     switch (x){
     case 1:
@@ -54,21 +53,21 @@ void MyPublish(char* reading,char x){
         command[14]='3';
         break;
     default:
+        command[14]='0';
         break;
     }
-
     send_str5(command);
     Delayms(50);
     send_str5_mqtt(buf1);
     Delayms(1000);
-
+    test2[2]='z';
     len += MQTTSerialize_disconnect(buf2,buflen2); /* 3 */
     send_str5("AT+CIPSEND=4,1\r\n");
     Delayms(50);
     send_str5_mqtt(buf2);
     Delayms(1000);
     send_str5("AT+CIPCLOSE=4\r\n");
-
+    test2[3]='z';
 }
 
 
@@ -99,11 +98,11 @@ void MySub_Init(){
         send_str4_mqtt(buf);
         Delayms(1000);
 
-        topicString.cstring = "MyTemp"; //topic
+        topicString.cstring = "Commands"; //topic
 
        len = MQTTSerialize_subscribe(buf1, buflen1, 0, msgid, 1, &topicString, &req_qos); //new buf for sub packet
 
-       send_str4("AT+CIPSEND=13\r\n");
+       send_str4("AT+CIPSEND=15\r\n");
        Delayms(50);
        send_str4_mqtt(buf1);
        Delayms(1000);
